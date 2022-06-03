@@ -1,20 +1,22 @@
 import express from "express";
-import { appRoutes } from "./routes";
-import { errorMiddleware } from "./middlewares/error.middleware";
-import { Request, Response } from "express";
+import routes from "./routes";
+// import { errorMiddleware } from "./middlewares/error.middleware";
+// import { Request, Response } from "express";
 
 const app = express();
 
 app.use(express.json());
 
-appRoutes(app);
+app.use(routes);
 
-app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({
-    message: "Hello World",
-  });
-});
+// appRoutes(app);
 
-app.use(errorMiddleware);
+// app.get("/", (req: Request, res: Response) => {
+//   res.status(200).json({
+//     message: "Hello World",
+//   });
+// });
+
+// app.use(errorMiddleware);
 
 app.listen(3000);
