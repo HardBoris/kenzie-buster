@@ -1,5 +1,5 @@
 import express from "express";
-import routes from "./routes";
+import routes from "./routes/user.routes";
 // import { errorMiddleware } from "./middlewares/error.middleware";
 // import { Request, Response } from "express";
 

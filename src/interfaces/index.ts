@@ -11,3 +11,12 @@ export interface IUserCreator {
   password: string;
   isAdm: boolean;
 }
+
+export interface IuserLoger {
+  email: string;
+  password: string;
+}
+
+export interface IUserIndividual {
+  authorization?: string;
+}

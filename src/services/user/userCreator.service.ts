@@ -1,6 +1,7 @@
 import { AppDataSource } from "./../../data-source";
 import { User } from "../../entities/user.entity";
 import { IUserCreator } from "../../interfaces";
+import bcrypt from "bcrypt";
 
 const userCreatorService = async ({ name, email, password }: IUserCreator) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -14,7 +15,7 @@ const userCreatorService = async ({ name, email, password }: IUserCreator) => {
   const user = new User();
   user.name = name;
   user.email = email;
-  user.password = password;
+  user.password = bcrypt.hashSync(password, 10);
   user.isAdm = false;
 
   userRepository.create(user);
