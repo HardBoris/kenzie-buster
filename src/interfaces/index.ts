@@ -16,7 +16,3 @@ export interface IuserLoger {
   email: string;
   password: string;
 }
-
-export interface IUserIndividual {
-  authorization?: string;
-}

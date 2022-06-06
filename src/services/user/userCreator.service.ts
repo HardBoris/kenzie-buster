@@ -3,7 +3,12 @@ import { User } from "../../entities/user.entity";
 import { IUserCreator } from "../../interfaces";
 import bcrypt from "bcrypt";
 
-const userCreatorService = async ({ name, email, password }: IUserCreator) => {
+const userCreatorService = async ({
+  name,
+  email,
+  password,
+  isAdm = false,
+}: IUserCreator) => {
   const userRepository = AppDataSource.getRepository(User);
   const users = await userRepository.find();
   const emailAlreadyExists = users.find((user) => user.email === email);
@@ -16,7 +21,7 @@ const userCreatorService = async ({ name, email, password }: IUserCreator) => {
   user.name = name;
   user.email = email;
   user.password = bcrypt.hashSync(password, 10);
-  user.isAdm = false;
+  user.isAdm = isAdm;
 
   userRepository.create(user);
   await userRepository.save(user);

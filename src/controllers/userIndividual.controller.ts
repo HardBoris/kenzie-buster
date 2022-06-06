@@ -3,9 +3,8 @@ import userIndividualService from "../services/user/userIndividual.service";
 
 const userIndividualController = async (req: Request, res: Response) => {
   try {
-    const user = await userIndividualService({
-      authorization: req.headers.authorization,
-    });
+    const email = req.userEmail;
+    const user = await userIndividualService(email);
     return res.status(200).send(user);
   } catch (err) {
     if (err instanceof Error) {
