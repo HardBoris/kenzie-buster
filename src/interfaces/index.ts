@@ -16,3 +16,8 @@ export interface IuserLoger {
   email: string;
   password: string;
 }
+
+export interface ICartCreator {
+  paid: boolean;
+  total: number;
+}

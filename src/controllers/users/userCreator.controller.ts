@@ -4,7 +4,7 @@ import { AppError, handleError } from "../../errors/appError";
 
 const userCreatorController = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, isAdm } = req.body;
+    const { name, email, password, isAdm, paid } = req.body;
 
     const newUser = await userCreatorService({ name, email, password, isAdm });
 
