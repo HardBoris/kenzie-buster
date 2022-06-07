@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { User } from "./../../entities/user.entity";
 import { AppDataSource } from "./../../data-source";
+import { AppError } from "../../errors/appError";
 
 const userPasswordUpdaterService = async (email: string, password: string) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -8,7 +9,7 @@ const userPasswordUpdaterService = async (email: string, password: string) => {
   const account = users.find((user) => user.email === email);
 
   if (bcrypt.compareSync(password, account!.password)) {
-    throw new Error("Inform a different password.");
+    throw new AppError(409, "Inform a different password.");
   }
 
   const newPassword = bcrypt.hashSync(password, 10);

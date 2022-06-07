@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AppError, handleError } from "../../errors/appError";
 import userPasswordUpdaterService from "../../services/user/userPasswordUpdater.service";
 
 const userPasswordUpdaterController = async (req: Request, res: Response) => {
@@ -14,10 +15,9 @@ const userPasswordUpdaterController = async (req: Request, res: Response) => {
     return res.status(200).json({ message: "Password updated!" });
   } catch (err) {
     if (err instanceof Error) {
-      return res.status(401).send({
-        error: err.name,
-        message: err.message,
-      });
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
     }
   }
 };

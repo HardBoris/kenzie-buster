@@ -1,3 +1,4 @@
+import { AppError, handleError } from "./../../errors/appError";
 import { Request, Response } from "express";
 import userListerService from "../../services/user/userLister.service";
 
@@ -7,10 +8,9 @@ const userListerController = async (req: Request, res: Response) => {
     return res.send(users);
   } catch (err) {
     if (err instanceof Error) {
-      return res.status(400).send({
-        error: err.name,
-        message: err.message,
-      });
+      if (err instanceof AppError) {
+        handleError(err, res);
+      }
     }
   }
 };
