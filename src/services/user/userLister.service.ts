@@ -1,9 +1,12 @@
 import { User } from "../../entities/user.entity";
 import { AppDataSource } from "../../data-source";
+import { Reducer } from "../../utils";
 
-const userListerService = async () => {
+const userListerService = async (): Promise<Partial<User>[]> => {
   const userRepository = AppDataSource.getRepository(User);
-  const users = userRepository.find();
+  const users = await (
+    await userRepository.find()
+  ).map((u: User) => Reducer(u));
   return users;
 };
 

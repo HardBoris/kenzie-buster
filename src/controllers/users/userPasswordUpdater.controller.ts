@@ -14,10 +14,8 @@ const userPasswordUpdaterController = async (req: Request, res: Response) => {
     const user = await userPasswordUpdaterService(email, password);
     return res.status(200).json({ message: "Password updated!" });
   } catch (err) {
-    if (err instanceof Error) {
-      if (err instanceof AppError) {
-        handleError(err, res);
-      }
+    if (err instanceof AppError) {
+      handleError(err, res);
     }
   }
 };

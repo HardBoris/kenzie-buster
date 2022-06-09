@@ -1,6 +1,6 @@
 import { User } from "./../../entities/user.entity";
 import { AppDataSource } from "./../../data-source";
-import { IuserLoger } from "./../../interfaces/index";
+import { IuserLoger } from "../../interfaces/user/index";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { AppError } from "../../errors/appError";

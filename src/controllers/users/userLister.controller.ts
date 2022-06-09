@@ -7,10 +7,8 @@ const userListerController = async (req: Request, res: Response) => {
     const users = await userListerService();
     return res.send(users);
   } catch (err) {
-    if (err instanceof Error) {
-      if (err instanceof AppError) {
-        handleError(err, res);
-      }
+    if (err instanceof AppError) {
+      handleError(err, res);
     }
   }
 };

@@ -8,10 +8,8 @@ const userIndividualController = async (req: Request, res: Response) => {
     const user = await userIndividualService(email);
     return res.status(200).send(user);
   } catch (err) {
-    if (err instanceof Error) {
-      if (err instanceof AppError) {
-        handleError(err, res);
-      }
+    if (err instanceof AppError) {
+      handleError(err, res);
     }
   }
 };

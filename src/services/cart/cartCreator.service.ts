@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import { ICartCreator } from "../../interfaces";
+import { ICartCreator } from "../../interfaces/user";
 import { Cart } from "../../entities/cart.entity";
 
 const cartCreatorService = async ({ paid = false, total }: ICartCreator) => {

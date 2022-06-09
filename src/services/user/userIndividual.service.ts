@@ -1,13 +1,16 @@
 import { User } from "./../../entities/user.entity";
 import { AppDataSource } from "./../../data-source";
+import { Reducer } from "../../utils";
 
 const userIndividualService = async (email: string) => {
   const userRepository = AppDataSource.getRepository(User);
   const users = await userRepository.find();
 
-  const account = users.find((user) => user.email === email);
+  const user = users.find((user) => user.email === email);
 
-  return account;
+  // const userReduced = Reducer(user);
+
+  return user;
 };
 
 export default userIndividualService;

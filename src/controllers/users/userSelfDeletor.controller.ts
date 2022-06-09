@@ -8,10 +8,8 @@ const userSelfDeletorController = async (req: Request, res: Response) => {
     const user = await userSelfDeletorService(email);
     return res.status(200).json({ message: "User deleted with success!" });
   } catch (err) {
-    if (err instanceof Error) {
-      if (err instanceof AppError) {
-        handleError(err, res);
-      }
+    if (err instanceof AppError) {
+      handleError(err, res);
     }
   }
 };
