@@ -13,7 +13,7 @@ const routes = Router();
 
 export const userRoutes = () => {
   // routes.post("/register", userCreatorController);
-  routes.post("/register", verifyEmail, userCreatorController);
+  routes.post("/register", userCreatorController);
   routes.post("/users/login", userLogerController);
   routes.get("/users", authUser, userListerController);
   routes.get("/users/me", authUser, userIndividualController);

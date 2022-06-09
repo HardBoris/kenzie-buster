@@ -3,6 +3,7 @@ import { User } from "../../entities/user.entity";
 import { IUserCreator } from "../../interfaces/user";
 import bcrypt from "bcrypt";
 import { Reducer } from "../../utils";
+import { AppError } from "../../errors/appError";
 
 const userCreatorService = async ({
   name,
@@ -11,6 +12,12 @@ const userCreatorService = async ({
   isAdm = false,
 }: IUserCreator) => {
   const userRepository = AppDataSource.getRepository(User);
+  const users = await userRepository.find();
+  const userExists = users.find((user) => user.email === email);
+
+  if (userExists) {
+    throw new AppError(409, "Email Already Exists");
+  }
 
   const user = new User();
   user.name = name;
