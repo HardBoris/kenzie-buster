@@ -1,5 +1,5 @@
 import { AppError } from "./../errors/appError";
-import { User } from "./../entities/user.entity";
+import { User } from "../entities/User";
 import { AppDataSource } from "./../data-source";
 import { Request, Response, NextFunction } from "express";
 

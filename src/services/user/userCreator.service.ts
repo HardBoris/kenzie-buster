@@ -1,5 +1,5 @@
 import { AppDataSource } from "./../../data-source";
-import { User } from "../../entities/user.entity";
+import { User } from "../../entities/User";
 import { IUserCreator } from "../../interfaces/user";
 import bcrypt from "bcrypt";
 import { Reducer } from "../../utils";

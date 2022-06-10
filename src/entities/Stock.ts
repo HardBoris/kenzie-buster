@@ -1,23 +1,17 @@
 import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
-// import { Cart } from "./cart.entity";
+import { DVD } from "./DVD";
 
 @Entity()
-export class User {
+export class Stock {
   @PrimaryColumn("uuid")
   readonly id: string;
 
-  @Column()
-  name: string;
+  @Column("float")
+  price: number;
 
   @Column()
-  email: string;
-
-  @Column()
-  password: string;
-
-  @Column()
-  isAdm: boolean;
+  quantity: number;
 
   constructor() {
     if (!this.id) {

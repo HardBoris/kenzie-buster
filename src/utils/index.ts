@@ -1,4 +1,4 @@
-import { User } from "../entities/user.entity";
+import { User } from "../entities/User";
 
 const Reducer = (user: User): Partial<User> => {
   const { password, ...reducido } = user;

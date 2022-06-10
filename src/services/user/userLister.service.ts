@@ -1,4 +1,4 @@
-import { User } from "../../entities/user.entity";
+import { User } from "../../entities/User";
 import { AppDataSource } from "../../data-source";
 import { Reducer } from "../../utils";
 

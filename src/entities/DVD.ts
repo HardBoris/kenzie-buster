@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Stock } from "./stock.entity";
+import { Stock } from "./Stock";
 
 @Entity()
 export class DVD {

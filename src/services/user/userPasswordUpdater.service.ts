@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { User } from "./../../entities/user.entity";
+import { User } from "../../entities/User";
 import { AppDataSource } from "./../../data-source";
 import { AppError } from "../../errors/appError";
 
@@ -12,8 +12,8 @@ const userPasswordUpdaterService = async (email: string, password: string) => {
     throw new AppError(409, "Inform a different password.");
   }
 
-  const newPassword = bcrypt.hashSync(password, 10);
-  await userRepository.update(account!.id, { password: newPassword });
+  // const newPassword = bcrypt.hashSync(password, 10);
+  // await userRepository.update(account!.id, { password: newPassword });
   return true;
 };
 
